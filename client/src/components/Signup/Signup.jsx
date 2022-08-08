@@ -15,7 +15,7 @@ const Signup = () => {
             email:e.target.email.value,
             password:e.target.password.value
         }
-        const res = await axios.post('/api/signup',data);
+        const res = await axios.post('/api/signup',data).then((res) => {console.log(res.data)});
     }
     return(
         <div className="position-absolute bg-light h-100 w-100 d-flex justify-content-start">
