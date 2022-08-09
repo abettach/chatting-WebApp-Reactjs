@@ -3,3 +3,16 @@
     font-weight: 500;
     font-size: 25px;
 }
+
+@media only screen and (max-width: 1300px) {
+    #img {
+        display:none;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    #email, #password, #btn {
+        width: 90% !important;
+    }
+}
