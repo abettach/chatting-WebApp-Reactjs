@@ -97,7 +97,15 @@ app.delete('/api/logout', (req, res, next) => {
     }
   })(req, res, next);
 })
-app.get("/api/user", (req, res) => {});
+app.get("/api/user", (req, res) => {
+	const userData = {
+		first_name: req.user.first_name,
+		last_name: req.user.last_name,
+		email: req.user.email,
+		id: req.user.id
+	}
+	res.send(userData);
+});
 
 app.listen(PORT, () => {
   console.log(`server has started: http://localhost:${PORT}`);
