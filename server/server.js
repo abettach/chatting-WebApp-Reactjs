@@ -48,9 +48,9 @@ require("./passport-config")(passport);
 
 // Routes
 
-app.get('/api/isAuth', (req, res) => {
-  res.send({isAuth: req.isAuthenticated()});
-})
+app.get("/api/isAuth", (req, res) => {
+  res.send({ isAuth: req.isAuthenticated() });
+});
 
 app.post("/api/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -66,10 +66,10 @@ app.post("/api/login", (req, res, next) => {
   })(req, res, next);
 });
 app.post("/api/logout", (req, res, next) => {
-  console.log("imHereee=",req.isAuthenticated())
+  console.log("imHereee=", req.isAuthenticated());
   req.logout((err) => {
     if (err) return next(err);
-  })
+  });
 });
 app.post("/api/signup", (req, res) => {
   User.findOne({ email: req.body.email }, async (err, doc) => {
@@ -87,24 +87,24 @@ app.post("/api/signup", (req, res) => {
     }
   });
 });
-app.delete('/api/logout', (req, res, next) => {
+app.delete("/api/logout", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) res.send("No User Exists");
     else {
       req.logOut();
-      res.send("logout")
+      res.send("logout");
     }
   })(req, res, next);
-})
+});
 app.get("/api/user", (req, res) => {
-	const userData = {
-		first_name: req.user.first_name,
-		last_name: req.user.last_name,
-		email: req.user.email,
-		id: req.user.id
-	}
-	res.send(userData);
+  const userData = {
+    first_name: req.user.first_name,
+    last_name: req.user.last_name,
+    email: req.user.email,
+    id: req.user.id,
+  };
+  res.send(userData);
 });
 
 app.listen(PORT, () => {
