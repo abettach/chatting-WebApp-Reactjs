@@ -8,7 +8,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const User = require("./models/user");
-
+//test if the push is working
 mongoose.connect(
   "mongodb+srv://root:root@cluster0.g8oqkdb.mongodb.net/?retryWrites=true&w=majority",
   {
